@@ -1,0 +1,14 @@
+version: 2.1
+
+# 1. Подключаем официальный плагин (Orb) для работы с Heroku
+orbs:
+  heroku: circleci/heroku@2.0.0
+
+# 2. Описываем шаги пайплайна
+workflows:
+  build-and-deploy:
+    jobs:
+      - heroku/deploy-via-git:
+          filters:
+            branches:
+              only: main
