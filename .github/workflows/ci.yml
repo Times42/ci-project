@@ -1,0 +1,29 @@
+name: CI Pipeline
+
+# 1. Триггер: запускать пайплайн при каждом коммите (push) в ветку main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. Описание шагов сборки
+jobs:
+  build:
+    # Запускаем сборку на виртуальной машине с последней версией Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+    # Шаг 1: Скачиваем исходный код репозитория на виртуальную машину
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Шаг 2: Выводим сообщение в консоль (проверка, что скрипт работает)
+    - name: Run a one-line script
+      run: echo "Начало автоматической сборки приложения..."
+
+    # Шаг 3: Пример шага сборки (можете заменить на сборку вашего проекта, например: npm run build, docker build и т.д.)
+    - name: Simulate Build Process
+      run: |
+        echo "Компиляция и сборка проекта..."
+        echo "Сборка успешно завершена!"
